@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+       <!-- For enterprise properties conofiguration -->
+       <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+              <property name="locations">
+                     <list>
+                            <value>classpath:env.properties</value>
+                     </list>
+              </property>
+       </bean>
+
+       <import resource="spring-hibernate.xml"/>
+       <import resource="spring-dao.xml"/>
+       <import resource="spring-service.xml"/>
+       <import resource="spring-tx.xml"/>
+
+
+
+</beans>
