@@ -1,28 +1,18 @@
 Ext.define('APP.view.AppViewPort', {
     extend: 'Ext.container.Viewport',
-    requires:[],
+    requires:[
+        "APP.view.panels.myTablePanel",
+        "APP.view.panels.myToolPanel",
+        "APP.view.panels.myTreePanel"
+    ],
     layout: 'border',
     items:[
         {
-            title:'1',
             region: 'north',
-            xtype: 'myToolPanel',
-            text:'asdfasdf',
-            height: '30%',
-            layout:'hbox',
-            //items:[
-            //    {
-            //        xtype:'button',
-            //        text:'添加用户',
-            //        handler:function(){
-            //            window.location.href="user/add";
-            //        }
-            //    }
-            //]
+            xtype: 'myToolPanel'
         },
         {
             region: 'west',
-            title:'2',
             xtype: 'myTreePanel',
             width: '20%'
         },

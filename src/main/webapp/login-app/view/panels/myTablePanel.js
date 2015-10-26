@@ -1,4 +1,5 @@
-Ext.define('APP.view.myTablePanel',{
-    extend: 'Ext.table.Panel',
+Ext.define('APP.view.panels.myTablePanel', {
+    extend: 'Ext.tab.Panel',
     alias: 'widget.myTablePanel',
+
 });
