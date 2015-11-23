@@ -5,7 +5,6 @@ Ext.define('APP.view.LoginPanel', {
 
     url: 'login',
 
-    //layout: 'anchor',
     defaults: {
         anchor: '90%'
     },
@@ -32,7 +31,7 @@ Ext.define('APP.view.LoginPanel', {
             form.submit(
                 {
                     success: function (form, action) {
-                        window.location.href = "myApp";
+                        window.location.href = "xDesktop";
                     },
                     failure: function (form, action) {
                         window.location.href = "login";
@@ -40,6 +39,5 @@ Ext.define('APP.view.LoginPanel', {
                 }
             );
         }
-    }],
-    renderTo: Ext.getBody()
+    }]
 });

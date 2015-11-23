@@ -10,13 +10,25 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/spring-tx.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/spring.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/action-servlet.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modeljsp/projectsStore.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modeljsp/rolesStore.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modeljsp/tasksStore.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modeljsp/usersStore.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/extjs" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/view/AppViewPort.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/view/LoginPanel.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/view/panels/myTablePanel.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/view/panels/myToolPanel.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/view/panels/myTreePanel.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/view/panels/MyTablePanel.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/view/panels/MyToolPanel.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/ProjectEdit.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/ProjectList.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/RoleEdit.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/RoleList.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/TaskEdit.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/TaskList.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/UploadImg.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/XUserEdit.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login-app/xuser/view/XUserList.js" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

@@ -2,158 +2,98 @@ package org.wangy.webtest.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.wangy.webtest.command.TaskCommand;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.wangy.webtest.command.JsonCommand;
 import org.wangy.webtest.model.Project;
 import org.wangy.webtest.model.Task;
 import org.wangy.webtest.model.User;
 import org.wangy.webtest.service.ProjectService;
 import org.wangy.webtest.service.TaskService;
 import org.wangy.webtest.service.UserService;
-import org.wangy.webtest.validator.TaskValidator;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2015/9/10.
+ * Created by Administrator on 2015/10/29.
  */
 @Controller
-@RequestMapping("/task")
+@RequestMapping("/x/task")
 public class TaskController {
 
     @Autowired
-    TaskService taskService;
-
+    private TaskService taskService;
     @Autowired
-    ProjectService projectService;
-
+    private UserService userService;
     @Autowired
-    UserService userService;
-
-    @Autowired
-    TaskValidator validator;
-
-
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addTask(Model model) {
-        List<Project> projectList = projectService.list();
-        List<User> userList = userService.list();
-        model.addAttribute("projectList",projectList);
-        model.addAttribute("userList",userList);
-        model.addAttribute("command", new TaskCommand());
-        return "/task/add";
-    }
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String createProject(
-            @ModelAttribute("command") TaskCommand command,
-            BindingResult result,
-            Model model
-    ) throws Exception {
-        validator.validate(command, result);
-        if (!result.hasErrors()) {
-            Task task = command.toTask();
-            Integer id = taskService.save(task);
-            return "redirect:/task/info?id=" + id;
-        } else {
-            return "/task/add";
-        }
-    }
-
-    @RequestMapping(value = "/info", method = RequestMethod.GET)
-    public String getProject(
-            Integer id,
-            Model model
-    ) {
-        Task task = taskService.get(id);
-        model.addAttribute("task", new TaskCommand(task));
-        return "/task/info";
-    }
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String listProject(
-            Model model,
-            String query
-    ) {
-        List<Task> taskList = null;
-        if (query == null || "".equals(query)) {
-            taskList = taskService.list();
-        } else {
-            taskList = taskService.findTasks(query);
-        }
-        model.addAttribute("taskList", taskList);
-
-        return "/task/list";
-    }
-
-
+    private ProjectService projectService;
 
     @RequestMapping(
-            value = "/edit",
+            value = "/list",
             method = RequestMethod.GET
     )
-    protected String editProject(
-            Integer id,
-            Model model
-    ) {
-        Task task = taskService.get(id);
-        if (task != null) {
-
-            List<User> userList = userService.list();
-            model.addAttribute("userList",userList);
-            List<Project> projectList = projectService.list();
-            model.addAttribute("projectList",projectList);
-            model.addAttribute("command", new TaskCommand(task));
-            return "/task/edit";
+    @ResponseBody
+    protected JsonCommand list(HttpServletRequest request) {
+        int limitSize = Integer.valueOf(request.getParameter("limit"));
+        int startSize = Integer.valueOf(request.getParameter("start"));
+        List<Task> tasks = taskService.list(startSize, limitSize);
+        for (Task task : tasks) {
+            if (task.getUser() != null) {
+                task.setUserId(task.getUser().getId());
+            }
+            if (task.getProject() != null) {
+                task.setProjectId(task.getProject().getId());
+            }
         }
-        return "/error";
+        return new JsonCommand(tasks, taskService.getCount());
     }
 
-
     @RequestMapping(
-            value = "/edit",
-            method = RequestMethod.POST)
-    protected String updateProject(
-            @ModelAttribute("command") TaskCommand command,
-            BindingResult result,
-            Model model
-    ) throws Exception {
-        validator.validate(command, result);
-        if (!result.hasErrors()) {
-            Task task = taskService.get(command.getId());
-            command.update(task);
-            taskService.update(task);
-            return "redirect:/task/info?id=" + task.getId();
-        } else {
-            Task task = taskService.get(command.getId());
-            List<User> userList = userService.list();
-            model.addAttribute("userList",userList);
-            List<Project> projectList = projectService.list();
-            model.addAttribute("projectList",projectList);
-            return "/task/edit";
-        }
-    }
-
-
-    @RequestMapping(
-            value  = "/delete",
-            method = RequestMethod.GET
+            value = "/create",
+            method = RequestMethod.POST
     )
-    protected String deleteUser(Integer id, Model model) {
-        taskService.delete(id);
-        return "redirect:/task/list";
+    @ResponseBody
+    protected JsonCommand create(@RequestBody Task task) {
+        task.setId(null);
+        Integer id = taskService.save(task);
+        task = taskService.get(id);
+        List<Task> tasks = new ArrayList<Task>(1);
+        tasks.add(task);
+        return new JsonCommand(tasks);
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.GET)
-     protected String upload(){
-        return "/file/upload";
+    @RequestMapping(
+            value = "/delete",
+            method = RequestMethod.POST
+    )
+    @ResponseBody
+    protected JsonCommand delete(@RequestBody Task task) {
+        taskService.delete(task.getId());
+        List<Task> tasks = taskService.list();
+        return new JsonCommand(tasks);
     }
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    protected String uploadadd(){
-        return "/file/upload";
+
+    @RequestMapping(
+            value = "/update",
+            method = RequestMethod.POST
+    )
+    @ResponseBody
+    protected JsonCommand update(@RequestBody Task task) {
+        List<Task> tasks = new ArrayList<Task>();
+        int userId = task.getUserId();
+        int projectId = task.getProjectId();
+        User user = userService.get(userId);
+        Project project = projectService.get(projectId);
+        task.setUser(user);
+        task.setProject(project);
+        taskService.update(task);
+        tasks.add(task);
+        return new JsonCommand(tasks);
     }
+
 
 }

@@ -47,4 +47,15 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
     public List<Task> findTasks(String query) {
         return getSession().createQuery("from Task where taskName like :q or taskDescription like :q").setParameter("q", ("%"+query+"%")).list();
     }
+
+    @Override
+    public List<Task> list(int start, int pageSize) {
+        return getSession().createQuery("from Task").setFirstResult(start).setMaxResults(pageSize).list();
+    }
+
+    @Override
+    public int getCount() {
+        Number number = (Number) getSession().createQuery("select count(id) from Task").uniqueResult();
+        return number.intValue();
+    }
 }

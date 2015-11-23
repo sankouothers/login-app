@@ -21,30 +21,12 @@ import org.wangy.webtest.service.UserService;
 import org.wangy.webtest.until.Constants;
 
 
-/**
- * Created by Yang Wang on 8/15/15.
- *
- * @author $author$
- * @version $Revision$, $Date$
- */
 @Controller
 public class LoginAction {
-    //~ Instance fields --------------------------------------------------------------------------------------------------
 
-    /**
-     * DOCUMENT ME!
-     */
     @Autowired
     UserService userService;
 
-    //~ Methods ----------------------------------------------------------------------------------------------------------
-
-    /**
-     * DOCUMENT ME!
-     *
-     * @return DOCUMENT ME!
-     * @throws Exception DOCUMENT ME!
-     */
     @RequestMapping(
             value = "/login",
             method = RequestMethod.GET
@@ -54,23 +36,14 @@ public class LoginAction {
     }
 
     @RequestMapping(
-            value = "/myApp",
+            value = "/xDesktop",
             method = RequestMethod.GET
     )
     protected String myApp() {
-        return "myApp";
+        return "xDesktop";
     }
-    //~ ------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * DOCUMENT ME!
-     *
-     * @param request   DOCUMENT ME!
-     * @param loginForm command DOCUMENT ME!
-     * @param result    errors DOCUMENT ME!
-     * @return DOCUMENT ME!
-     * @throws Exception DOCUMENT ME!
-     */
+
     @RequestMapping(
             value = "/login",
             method = RequestMethod.POST
@@ -83,6 +56,5 @@ public class LoginAction {
         } else {
             return "false";
         }
-
     }
-} // end class LoginAction
+}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.wangy.webtest.model.User;
 
 
@@ -57,6 +58,8 @@ public interface UserDao {
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
+  List<User> list(int start, int pageSize);
+
   /**
    * DOCUMENT ME!
    *
@@ -68,6 +71,8 @@ public interface UserDao {
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
+  int getCount();
+
   /**
    * DOCUMENT ME!
    *
@@ -76,4 +81,8 @@ public interface UserDao {
   void update(User user);
 
   List<User> findUsers(String query);
+
+  List<User> findUsers(String query, int startSize, int limitSize);
+
+  int getCount(String query);
 } // end interface UserDao

@@ -44,4 +44,15 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
     public List<Role> findRoles(String query) {
         return getSession().createQuery("from Role where name like :q or description like :q").setParameter("q", ("%"+query+"%")).list();
     }
+
+    @Override
+    public List<Role> list(int start, int pageSize) {
+        return getSession().createQuery("from Role").setFirstResult(start).setMaxResults(pageSize).list();
+    }
+
+    @Override
+    public int getCount() {
+        Number number = (Number) getSession().createQuery("select count(id) from Role").uniqueResult();
+        return number.intValue();
+    }
 }

@@ -1,20 +1,21 @@
-Ext.define('APP.view.panels.myToolPanel', {
+Ext.define('APP.view.panels.MyToolPanel', {
+    requires: ['APP.view.LoginPanel'],
+
     extend: 'Ext.panel.Panel',
-    alias: 'widget.myToolPanel',
+    alias: 'widget.MyToolPanel',
     height: '30%',
     layout: 'hbox',
     items: [
         {
 
             xtype: 'button',
-            glyph: 72,
-            scale: 'large',
             text: '添加用户',
             handler: function () {
-                //取到当前的整个网页页面  创建一个 window
                 Ext.widget('window', {
                     title: "添加用户",
                     resizable: false,
+                    modal: true,
+                    layout: 'fit',
                     items: [
                         {
                             frame: true,

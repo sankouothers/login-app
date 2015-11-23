@@ -18,7 +18,6 @@ public class Aop implements Serializable{
     private String operation;
     @Column
     private Date date;
-    String userAudit;
 
     public Integer getId() {
         return id;

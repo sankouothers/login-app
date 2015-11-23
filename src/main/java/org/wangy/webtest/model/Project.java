@@ -16,6 +16,23 @@ public class Project implements Serializable {
     @JoinColumn(name = "userId")
     @ManyToOne(cascade ={ CascadeType.PERSIST, CascadeType.REFRESH})
     private User creator;
+    @Transient
+    private Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public String getUsername() {
+        if (this.getCreator() != null) {
+            return this.getCreator().getUsername();
+        }
+        return null;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getId() {
         return id;

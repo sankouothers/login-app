@@ -50,4 +50,14 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findTasks(String query) {
         return taskDao.findTasks(query);
     }
+
+    @Override
+    public List<Task> list(int start, int pageSize) {
+        return taskDao.list(start, pageSize);
+    }
+
+    @Override
+    public int getCount() {
+        return taskDao.getCount();
+    }
 }

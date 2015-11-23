@@ -50,4 +50,14 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Project> findProjects(String query) {
         return projectDao.findProjects(query);
     }
+
+    @Override
+    public List<Project> list(int start, int pageSize) {
+        return projectDao.list(start, pageSize);
+    }
+
+    @Override
+    public int getCount() {
+        return projectDao.getCount();
+    }
 }

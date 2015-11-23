@@ -73,4 +73,8 @@ public interface RoleDao {
   void update(Role role);
 
   List<Role> findRoles(String query);
+
+  List<Role> list(int start, int pageSize);
+
+  int getCount();
 } // end interface UserDao

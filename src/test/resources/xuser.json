@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "username": "wangpin",
+      "age": 22,
+      "email": "nihao@qq.com"
+    },
+    {
+      "id": 2,
+      "username": "sankou",
+      "age": 21,
+      "email": "sankou@qq.com"
+    },
+    {
+      "id": 4,
+      "username": "woshishui",
+      "age": 23,
+      "email": "wang@qq.com"
+    },
+    {
+      "id": 6,
+      "username": "qwer323",
+      "age": 32,
+      "email": ""
+    }
+  ],
+  "msg": "",
+  "total": 4,
+  "success": true
+}

@@ -29,6 +29,42 @@ public class Task implements Serializable {
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH})
     private Project project;
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    @Transient
+    private Integer userId;
+
+    @Transient
+    private Integer projectId;
+
+
+    public String getUserName() {
+        if (this.getUser() != null) {
+            return this.getUser().getUsername();
+        }
+        return null;
+    }
+
+    public String getProjectName() {
+        if (this.getProject() != null) {
+            return this.getProject().getProjectName();
+        }
+        return null;
+    }
 
     public Integer getId() {
         return id;

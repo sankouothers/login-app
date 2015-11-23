@@ -74,4 +74,8 @@ public interface RoleService {
   void update(Role role);
 
   List<Role> findRoles(String query);
+
+  List<Role> list(int startSize, int limitSize);
+
+  int getCount();
 } // end interface RoleService

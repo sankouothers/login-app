@@ -19,6 +19,7 @@
     <commons.io.version>1.3.2</commons.io.version>
     <javax.persistence.version>1.0</javax.persistence.version>
     <cglib.version>2.1_3</cglib.version>
+    <jackson.version>1.9.12</jackson.version>
   </properties>
 
   <dependencies>
@@ -176,6 +177,12 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
       <version>3.12</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
 
   </dependencies>

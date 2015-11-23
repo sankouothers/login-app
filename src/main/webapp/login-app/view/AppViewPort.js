@@ -1,27 +1,24 @@
 Ext.define('APP.view.AppViewPort', {
     extend: 'Ext.container.Viewport',
+
     requires:[
-        "APP.view.panels.myTablePanel",
-        "APP.view.panels.myToolPanel",
-        "APP.view.panels.myTreePanel"
+        "APP.view.panels.MyTablePanel",
+        "APP.view.panels.MyToolPanel"
     ],
-    layout: 'border',
+    layout: {
+        type: 'vbox'
+    },
     items:[
         {
-            region: 'north',
-            xtype: 'myToolPanel'
+            xtype: 'MyToolPanel',
+            title:'My Extjs Project',
+            width: '100%',
+            flex: 4
         },
         {
-            region: 'west',
-            xtype: 'myTreePanel',
-            width: '20%'
-        },
-        {
-            region: 'center',
-            title:'3',
-            xtype:'myTablePanel',
-            height: '40%',
-            width: '60%'
+            xtype:'MyTablePanel',
+            width: '100%',
+            flex: 4
         }
     ]
 });

@@ -27,7 +27,7 @@ public class UserAuditAdvice {
         userAudit.setGender(user.getGender());
         userAudit.setPassword(user.getPassword());
         userAudit.setPhoneNumber(user.getPhoneNumber());
-        userAudit.setRoleId(user.getRole().getId().toString());
+//        userAudit.setRoleId(user.getRole().getId().toString());
         userAudit.setUserId(id.toString());
         userAuditService.saveUserAudit(userAudit);
 

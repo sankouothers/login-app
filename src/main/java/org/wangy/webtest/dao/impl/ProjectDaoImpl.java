@@ -46,4 +46,15 @@ public class ProjectDaoImpl extends BaseDaoImpl implements ProjectDao {
     public List<Project> findProjects(String query) {
         return getSession().createQuery("from Project where projectName like :q or creator like :q").setParameter("q", ("%"+query+"%")).list();
     }
+
+    @Override
+    public List<Project> list(int start, int pageSize) {
+        return getSession().createQuery("from Project").setFirstResult(start).setMaxResults(pageSize).list();
+    }
+
+    @Override
+    public int getCount() {
+        Number number = (Number) getSession().createQuery("select count(id) from Project").uniqueResult();
+        return number.intValue();
+    }
 }

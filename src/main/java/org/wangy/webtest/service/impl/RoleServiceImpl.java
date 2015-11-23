@@ -50,4 +50,14 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> findRoles(String query) {
         return roleDao.findRoles(query);
     }
+
+    @Override
+    public List<Role> list(int start, int pageSize) {
+        return roleDao.list(start, pageSize);
+    }
+
+    @Override
+    public int getCount() {
+        return roleDao.getCount();
+    }
 }

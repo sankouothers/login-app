@@ -74,4 +74,8 @@ public interface ProjectService {
   void update(Project project);
 
   List<Project> findProjects(String query);
+
+  List<Project> list(int startSize, int limitSize);
+
+  int getCount();
 } // end interface ProjectService

@@ -2,6 +2,7 @@ package org.wangy.webtest.service;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.wangy.webtest.model.User;
 
 
@@ -55,6 +56,11 @@ public interface UserService {
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
+  List<User> list(int start, int pageSize);
+
+  int getCount();
+
+
   /**
    * DOCUMENT ME!
    *
@@ -74,4 +80,8 @@ public interface UserService {
   void update(User user);
 
   List<User> findUsers(String query);
+
+  List<User> findUsers(String query, int startSize, int limitSize);
+
+  int getCount(String query);
 } // end interface UserService

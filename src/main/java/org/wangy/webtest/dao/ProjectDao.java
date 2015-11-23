@@ -15,4 +15,8 @@ public interface ProjectDao {
     Integer save(Project project);
     List list();
     List<Project> findProjects(String query);
+
+    List<Project> list(int start, int pageSize);
+
+    int getCount();
 }

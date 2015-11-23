@@ -74,4 +74,8 @@ public interface TaskService {
   void update(Task task);
 
   List<Task> findTasks(String query);
+
+  List<Task> list(int startSize, int limitSize);
+
+  int getCount();
 } // end interface TaskService

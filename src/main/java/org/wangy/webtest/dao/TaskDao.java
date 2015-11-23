@@ -16,4 +16,8 @@ public interface TaskDao {
     Integer save(Task task);
     List<Task> list();
     List<Task> findTasks(String query);
+
+    List<Task> list(int start, int pageSize);
+
+    int getCount();
 }
