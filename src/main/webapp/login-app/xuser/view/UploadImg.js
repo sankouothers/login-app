@@ -53,14 +53,15 @@ Ext.define('APP.xuser.view.UploadImg', {
                     xtype: 'box',
                     id: 'browseImage',
                     fieldLabel: "预览图片",
-                    autoEl: {
-                        width: 300,
-                        height: 350,
-                        tag: 'img',
-                        type: 'image',
-                        src: '/x/user/photo?id='+a,
-                        complete: 'off'
-                    }
+                    html: "<img src='/x/user/photo?id="+a+"' width='200px' height='150px' />"
+                    //autoEl: {
+                    //    width: 300,
+                    //    height: 350,
+                    //    tag: 'img',
+                    //    type: 'image',
+                    //    src: '/x/user/photo?id='+a,
+                    //    complete: 'off'
+                    //}
                 }
             ]
         });

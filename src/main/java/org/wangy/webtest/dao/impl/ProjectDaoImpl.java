@@ -4,6 +4,7 @@ import org.wangy.webtest.dao.ProjectDao;
 import org.wangy.webtest.dao.RoleDao;
 import org.wangy.webtest.model.Project;
 import org.wangy.webtest.model.Role;
+import org.wangy.webtest.model.User;
 
 import java.util.List;
 

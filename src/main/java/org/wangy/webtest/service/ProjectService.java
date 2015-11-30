@@ -1,6 +1,7 @@
 package org.wangy.webtest.service;
 
 import org.wangy.webtest.model.Project;
+import org.wangy.webtest.model.User;
 
 import java.util.List;
 
@@ -52,6 +53,7 @@ public interface ProjectService {
    * @return  DOCUMENT ME!
    */
   List<Project> list();
+
 
   //~ ------------------------------------------------------------------------------------------------------------------
 

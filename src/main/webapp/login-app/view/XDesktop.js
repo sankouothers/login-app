@@ -7,7 +7,8 @@ Ext.define('APP.view.XDesktop', {
         'APP.xuser.view.XUserList',
         'APP.xuser.view.ProjectList',
         'APP.xuser.view.TaskList',
-        'APP.xuser.view.RoleList'
+        'APP.xuser.view.RoleList',
+        'APP.xuser.view.UserTree'
     ],
 
     layout: 'fit',
@@ -18,7 +19,6 @@ Ext.define('APP.view.XDesktop', {
             {
                 title: 'XUser',
                 xtype:'xuserlist'
-
             },
             {
                 title: 'Role',
@@ -31,8 +31,11 @@ Ext.define('APP.view.XDesktop', {
             {
                 title: 'Task',
                 xtype:'tasklist'
+            },
+            {
+                title: 'UserTree',
+                xtype:'usertree'
             }
-
         ]
     }
 });

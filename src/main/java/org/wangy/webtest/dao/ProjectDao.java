@@ -1,6 +1,7 @@
 package org.wangy.webtest.dao;
 
 import org.wangy.webtest.model.Project;
+import org.wangy.webtest.model.User;
 
 import java.util.List;
 
@@ -9,11 +10,17 @@ import java.util.List;
  */
 public interface ProjectDao {
     void delete(Integer id);
+
     Project findProject(String name);
+
     void update(Project project);
+
     Project get(Integer id);
+
     Integer save(Project project);
+
     List list();
+
     List<Project> findProjects(String query);
 
     List<Project> list(int start, int pageSize);

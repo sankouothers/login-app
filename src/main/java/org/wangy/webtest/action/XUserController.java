@@ -15,6 +15,9 @@ import org.wangy.webtest.service.RoleService;
 import org.wangy.webtest.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -157,14 +160,30 @@ public class XUserController {
             method = RequestMethod.GET
     )
     @ResponseBody
-    protected String getPhoto(HttpServletRequest request) {
+    protected String getPhoto(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.valueOf(request.getParameter("id"));
         User user = userService.get(id);
         byte[] photo = user.getPhoto();
+        BufferedInputStream bis = null;
+        byte[] b = new byte[1024];
+        if (photo != null) {
+            try {
+                bis = new BufferedInputStream(new ByteArrayInputStream(photo));
+                int len;
 
+                while ((len = bis.read(b)) != -1) {
+                    response.getOutputStream().write(b, 0, len);
+                }
+                bis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
+            return "true";
+        } else {
+            return "false";
+        }
 
-        return null;
     }
 
 

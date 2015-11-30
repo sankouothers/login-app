@@ -2,6 +2,7 @@ package org.wangy.webtest.service.impl;
 
 import org.wangy.webtest.dao.ProjectDao;
 import org.wangy.webtest.model.Project;
+import org.wangy.webtest.model.User;
 import org.wangy.webtest.service.ProjectService;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Project get(Integer id) {
         return projectDao.get(id);
     }
+
 
     @Override
     public List<Project> list() {
